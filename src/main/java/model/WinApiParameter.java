@@ -1,0 +1,16 @@
+package model;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class WinApiParameter {
+    long id;
+
+    String type;
+
+    String name;
+}
