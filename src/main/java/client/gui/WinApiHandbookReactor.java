@@ -65,7 +65,7 @@ public class WinApiHandbookReactor {
 
     public void removeFunction(WinApiFunction function) {
         try {
-            service.removeClass(function.getId());
+            service.removeWinApiFunction(function.getId());
             refreshEventSource.push(new ActionEvent());
         } catch (HandbookException e) {
             logger.debug(e.getMessage(),e);
@@ -74,7 +74,7 @@ public class WinApiHandbookReactor {
 
     public void removeParameter(WinApiParameter winApiParameter) {
         try {
-            service.removeClass(winApiParameter.getId());
+            service.removeWinApiParameter(winApiParameter.getId());
             refreshEventSource.push(new ActionEvent());
         } catch (HandbookException e) {
             logger.debug(e.getMessage(),e);

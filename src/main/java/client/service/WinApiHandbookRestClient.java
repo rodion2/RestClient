@@ -106,7 +106,7 @@ public class WinApiHandbookRestClient implements WinApiHandbookService {
     @Override
     public void removeClass(long id) throws HandbookException {
        try {
-            response = service.path(URLS.FUNCTION).queryParam("id",Long.toString(id))
+            response = service.path(URLS.WIN_API_CLASS).queryParam("id",Long.toString(id))
                     .delete(ClientResponse.class);
        }catch (ClientHandlerException e){
            throw new HandbookException("Failed to connect : "+e.getMessage(),e);
@@ -136,7 +136,7 @@ public class WinApiHandbookRestClient implements WinApiHandbookService {
     @Override
     public void removeWinApiFunction(long id) throws HandbookException {
         try{
-             response = service.path(URLS.FUNCTION).path(Long.toString(id)).delete(ClientResponse.class, Long.toString(id));
+             response = service.path(URLS.FUNCTION).queryParam("id",Long.toString(id)).delete(ClientResponse.class);
         }catch (ClientHandlerException e){
             throw new HandbookException("Failed to connect : "+e.getMessage());
         }
@@ -150,7 +150,7 @@ public class WinApiHandbookRestClient implements WinApiHandbookService {
     @Override
     public void updateParam(WinApiParameter parameter) throws HandbookException {
        try{
-            response = service.path(URLS.PARAMETER).put(ClientResponse.class, gsonService.toJson(parameter));
+            response = service.path(URLS.PARAMETER).queryParam("parameter",gsonService.toJson(parameter)).put(ClientResponse.class);
        }catch (ClientHandlerException e){
            throw new HandbookException("Failed to connect : "+e.getMessage(),e);
        }
@@ -164,7 +164,7 @@ public class WinApiHandbookRestClient implements WinApiHandbookService {
     @Override
     public void removeWinApiParameter(long id) throws HandbookException {
        try{
-            response = service.path(URLS.PARAMETER).delete(ClientResponse.class, Long.toString(id));
+            response = service.path(URLS.PARAMETER).queryParam("id",Long.toString(id)).delete(ClientResponse.class);
        }catch (ClientHandlerException e){
            throw new HandbookException("Failed to connect : "+e.getMessage(),e);
        }
